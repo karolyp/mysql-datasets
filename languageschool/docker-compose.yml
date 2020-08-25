@@ -1,0 +1,14 @@
+version: "2.0"
+services:
+  mysql:
+    image: mysql:latest
+    container_name: langschool-mysql
+    ports:
+      - 3307:3306
+    volumes:
+      - ./languageschool.sql:/docker-entrypoint-initdb.d/dump.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: languageschool
+    cap_add:
+      - SYS_NICE
